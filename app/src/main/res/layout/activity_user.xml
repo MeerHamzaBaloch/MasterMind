@@ -27,28 +27,33 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:background="@drawable/border_shap"
-            android:padding="30dp">
+            android:padding="40dp"
+            >
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="REGISTER"
                 android:layout_gravity="center"
                 android:padding="10dp"
-                android:textColor="@color/orange"
+                android:textColor="@color/white"
                 android:textSize="30dp"/>
 
             <EditText
+                android:textColorHint="@color/orange"
                 android:id="@+id/full_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Full Name"
                 android:background="@drawable/input_shap"
                 android:drawableLeft="@drawable/ic_baseline_account_circle_24"
+                android:hint="Full Name"
                 android:paddingLeft="17dp"
                 android:paddingTop="17dp"
-                android:paddingBottom="17dp" />
+                android:paddingBottom="17dp"
+                android:textColor="@color/white"
+                />
 
             <EditText
+                android:textColorHint="@color/orange"
                 android:id="@+id/et_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -58,9 +63,11 @@
                 android:paddingLeft="17dp"
                 android:paddingTop="17dp"
                 android:paddingBottom="17dp"
+                android:textColor="@color/white"
                 android:layout_marginTop="10dp"/>
 
             <EditText
+                android:textColorHint="@color/orange"
                 android:id="@+id/et_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -71,6 +78,7 @@
                 android:paddingLeft="17dp"
                 android:paddingTop="17dp"
                 android:paddingBottom="17dp"
+                android:textColor="@color/white"
                 android:layout_marginTop="10dp"/>
 
             <LinearLayout
@@ -96,7 +104,7 @@
                     android:textStyle="bold"
                     android:layout_gravity="center"
                     android:id="@+id/Login_Now"
-                    android:textColor="@color/orange"
+                    android:textColor="@color/white"
                     android:background="?android:attr/selectableItemBackground"
                     android:layout_marginTop="10dp"/>
             </LinearLayout>
