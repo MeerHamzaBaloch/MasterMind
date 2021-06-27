@@ -42,28 +42,35 @@ public class UserActivity extends AppCompatActivity {
                     String email = etemail.getText().toString();
                     String pass = etpassword.getText().toString();
 
-                    if (FullName.equals("")||email.equals("")||pass.equals(""))
+                    if (FullName.equals("")||email.equals("")||pass.equals("")){
                         Toast.makeText( UserActivity.this, "Pleace Enter all the fields", Toast.LENGTH_SHORT).show();
-                    else {
-                            Boolean checkusersemail = DB.checkusersemail(email, FullName);
-                            if (checkusersemail==false)
+                    }else  if (email.matches(emailPattern))
+                    {
+                        Boolean checkusersemail = DB.checkusersemail(email, FullName);
+                        if (checkusersemail==false)
+                        {
+                            Boolean insert = DB.insertData(FullName,email,pass);
+                            if (insert==true)
                             {
-                                Boolean insert = DB.insertData(FullName,email,pass);
-                                if (insert==true)
-                                {
-                                    Toast.makeText(UserActivity.this,"Registered Successfull",Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(UserActivity.this,LoginActivity.class);
-                                    startActivity(intent);
-                                }else
-                                {
-                                    Toast.makeText(UserActivity.this,"Register failed",Toast.LENGTH_SHORT).show();
-                                }
+                                Toast.makeText(UserActivity.this,"Registered Successfull",Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(UserActivity.this,LoginActivity.class);
+                                startActivity(intent);
                             }else
                             {
-                                Toast.makeText(UserActivity.this,"username or email already registered",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(UserActivity.this,"Register failed",Toast.LENGTH_SHORT).show();
                             }
+                        } else {
+                            Toast.makeText(UserActivity.this,"Register already exsist !",Toast.LENGTH_SHORT).show();
                         }
                     }
+                    else
+                    {
+                        Toast.makeText(UserActivity.this,"Email Invalid !",Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+
+
             });
 
         }
