@@ -9,6 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/my_bg"
         android:orientation="vertical">
 
         <LinearLayout
@@ -36,6 +37,7 @@
                 android:layout_gravity="center"
                 android:padding="10dp"
                 android:textColor="@color/white"
+                android:fontFamily="@font/beaver"
                 android:textSize="30dp"/>
 
             <EditText
