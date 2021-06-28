@@ -25,7 +25,7 @@
             android:layout_height="200dp"
             app:lottie_url="REPLACE_JSON_URL"
             app:lottie_autoPlay="true"
-            app:lottie_rawRes="@raw/navbar1"
+            app:lottie_rawRes="@raw/probar2"
             app:lottie_loop="true"/>
 
     </LinearLayout>
