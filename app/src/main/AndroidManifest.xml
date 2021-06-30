@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MasterMind">
-        <activity android:name=".level_select"></activity>
+        <activity android:name=".easy_level">
+
+        </activity>
+        <activity android:name=".level_select" />
         <activity android:name=".Splash_Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,7 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".LoginActivity" />
         <activity android:name=".UserActivity" />
         <activity android:name=".MainActivity" />
     </application>

@@ -87,6 +87,7 @@
         >
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/easy_level_btn"
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:layout_marginTop="20dp"
@@ -104,7 +105,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:padding="15dp"
-                    android:text="120 SECONDS"
+                    android:text="EASY"
                     android:textColor="#fff"
                     android:textSize="30dp" />
 
@@ -114,16 +115,16 @@
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/easyText"
                     android:paddingLeft="15dp"
-                    android:text="EASY"
+                    android:text="120 SECONDS"
                     android:textColor="#fff"
                     android:textSize="18dp" />
 
                 <ImageView
                     android:id="@+id/imageView"
+                    android:layout_centerVertical="true"
                     android:layout_width="161dp"
                     android:layout_height="87dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="168dp"
+                    android:layout_marginLeft="135dp"
                     android:layout_toRightOf="@+id/textView"
                     app:srcCompat="@drawable/timer" />
 
@@ -151,7 +152,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:padding="15dp"
-                    android:text="60 SECONDS"
+                    android:text="MEDIUM"
                     android:textColor="#fff"
                     android:textSize="30dp" />
 
@@ -162,7 +163,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/mediumtext"
                     android:paddingLeft="15dp"
-                    android:text="MEDIUM"
+                    android:text="60 SECONDS"
                     android:textColor="#fff"
                     android:textSize="18dp" />
 
@@ -198,7 +199,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:padding="15dp"
-                    android:text="30 SECONDS"
+                    android:text="HARD"
                     android:textColor="#fff"
                     android:textSize="30dp" />
 
@@ -209,7 +210,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/hardtext"
                     android:paddingLeft="15dp"
-                    android:text="HARD"
+                    android:text="30 SECONDS"
                     android:textColor="#fff"
                     android:textSize="18dp" />
 
@@ -218,7 +219,7 @@
                     android:layout_width="161dp"
                     android:layout_height="87dp"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="168dp"
+                    android:layout_marginLeft="142dp"
                     android:layout_toRightOf="@+id/textView2"
                     app:srcCompat="@drawable/timer" />
 

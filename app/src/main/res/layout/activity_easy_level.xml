@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".level_select">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+
+            android:layout_gravity="center_vertical"
+
+
+
+            app:srcCompat="@drawable/account" />
+
+        <TextView
+            android:id="@+id/username_tv_easy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif-medium"
+            android:text="SELECT LEVEL"
+            android:textColor="@color/white"
+
+            android:textSize="18dp" />
+
+        <ImageView
+            android:id="@+id/logout"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:onClick="showPopup"
+            android:paddingLeft="92dp"
+            app:srcCompat="@drawable/settings" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="18dp">
+
+        <TextView
+            android:id="@+id/score_easy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:fontFamily="monospace"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/hint_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif-medium"
+            android:text="Guess the animal"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+
+
+
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/hint_box_easy"
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:layout_marginTop="10dp"
+        app:cardCornerRadius="24dp"
+        app:cardMaxElevation="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/easy_gradient">
+
+            <TextView
+                android:id="@+id/question_text_easy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:letterSpacing="0.1"
+                android:padding="35dp"
+                android:text="Place holder"
+                android:textColor="#fff"
+                android:textSize="30dp" />
+
+
+
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animationView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:lottie_url="REPLACE_JSON_URL"
+                app:lottie_autoPlay="true"
+                app:lottie_rawRes="@raw/question"
+
+                app:lottie_loop="true"/>
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/monkey"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        app:lottie_url="REPLACE_JSON_URL"
+        android:paddingRight="200dp"
+        app:lottie_autoPlay="true"
+        app:lottie_rawRes="@raw/monkey"
+        app:lottie_loop="true"/>
+
+
+    <EditText
+        android:id="@+id/easy_answer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your guess"
+        android:textColorHint="@color/white"
+        android:paddingTop="25dp"
+        android:textAlignment="center"
+        android:textColorLink="@color/white"
+        />
+
+    <Button
+        android:id="@+id/check_btn_easy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Check"
+        android:background="@drawable/gradient_colorbtn"/>
+
+
+
+
+
+
+</LinearLayout>
