@@ -10,7 +10,7 @@
     tools:context=".level_select">
 
     <ProgressBar
-        android:id="@+id/Progressbar"
+        android:id="@+id/Progressbar_hard"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,7 +38,7 @@
             app:srcCompat="@drawable/account" />
 
         <TextView
-            android:id="@+id/username_tv_easy"
+            android:id="@+id/username_tv_hard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -67,7 +67,7 @@
         android:padding="18dp">
 
         <TextView
-            android:id="@+id/score_easy"
+            android:id="@+id/score_hard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -82,11 +82,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:gravity="right"
             android:layout_weight="1"
             android:fontFamily="sans-serif-medium"
-            android:text="Guess the animal"
+            android:text="Guess the fruit"
             android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textSize="18dp" />
 
 
 
@@ -94,7 +95,7 @@
     </LinearLayout>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/hint_box_easy"
+        android:id="@+id/hint_box_hard"
         android:layout_width="match_parent"
         android:layout_height="190dp"
         android:layout_marginTop="10dp"
@@ -107,15 +108,14 @@
             android:background="@drawable/easy_gradient">
 
             <TextView
-                android:id="@+id/question_text_easy"
+                android:id="@+id/question_text_hard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:letterSpacing="0.1"
-                android:padding="35dp"
-                android:text="Place holder"
+                android:padding="21dp"
+                android:text="POMEGRANATE"
                 android:textColor="#fff"
-                android:textSize="30dp" />
+                android:textSize="25dp" />
 
 
 
@@ -137,18 +137,18 @@
 
 
     <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/monkey"
+        android:id="@+id/veg"
         android:layout_width="match_parent"
         android:layout_height="110dp"
         app:lottie_url="REPLACE_JSON_URL"
         android:paddingRight="200dp"
         app:lottie_autoPlay="true"
-        app:lottie_rawRes="@raw/monkey"
+        app:lottie_rawRes="@raw/fruit"
         app:lottie_loop="true"/>
 
 
     <EditText
-        android:id="@+id/easy_answer"
+        android:id="@+id/hard_answer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter your guess"
@@ -159,7 +159,7 @@
         />
 
     <Button
-        android:id="@+id/check_btn_easy"
+        android:id="@+id/check_btn_hard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Check"

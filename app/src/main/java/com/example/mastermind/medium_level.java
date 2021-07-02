@@ -23,7 +23,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-public class easy_level extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener  {
+public class medium_level extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener  {
 
 
     SharedPreferences sharedPreferences;
@@ -38,14 +38,14 @@ public class easy_level extends AppCompatActivity implements PopupMenu.OnMenuIte
     Button check;
     int score_int;
 
-    String[] pets = new String[]{
-            "BIRD","DOG","CAT","PANDA",
-            "TURTLE","RABBIT","MOUSE",
-            "HORSE","COW","FOX","CAMEL",
-            "WOLF","HEN","GOAT","DONKEY"
+    String[] vegs = new String[]{
+            "CORN","CARROT","GINGER","POTATO",
+            "ONION","LETTUCE","LEMON",
+            "TOMATO","RADISH","PEAS","GARLIC",
+            "OLIVE","MINT","MASHROOM","TURNIP"
     };
 
-    String pet;
+    String veg;
     Random random = new Random();
     ProgressBar progressBar;
     CountDownTimer count;
@@ -53,49 +53,49 @@ public class easy_level extends AppCompatActivity implements PopupMenu.OnMenuIte
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_easy_level);
+        setContentView(R.layout.activity_medium_level);
         sharedPreferences = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE);
         String name = sharedPreferences.getString(KEY_NAME,null);
-        tv_name = (TextView) findViewById(R.id.username_tv_easy);
+        tv_name = (TextView) findViewById(R.id.username_tv_medium);
         logout_btn = (ImageView) findViewById(R.id.logout);
 
-        question = (TextView) findViewById(R.id.question_text_easy);
-        answer = (EditText) findViewById(R.id.easy_answer);
-        check= (Button) findViewById(R.id.check_btn_easy);
-        score = (TextView) findViewById(R.id.score_easy);
-        progressBar = (ProgressBar) findViewById(R.id.Progressbar);
+        question = (TextView) findViewById(R.id.question_text_medium);
+        answer = (EditText) findViewById(R.id.medium_answer);
+        check= (Button) findViewById(R.id.check_btn_medium);
+        score = (TextView) findViewById(R.id.score_medium);
+        progressBar = (ProgressBar) findViewById(R.id.Progressbar_medium);
 
 
 
 
-        pet = pets[random.nextInt(pets.length)];
-        question.setText(mixWords(pet));
+        veg = vegs[random.nextInt(vegs.length)];
+        question.setText(mixWords(veg));
 
 
         //timer
-        count = new CountDownTimer(120*1000, 1000) {
+        count = new CountDownTimer(60*1000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                progressBar.setProgress((int) (millisUntilFinished/1200));
+                progressBar.setProgress((int) (millisUntilFinished/600));
             }
 
             @Override
             public void onFinish() {
-                final AlertDialog.Builder builder2 = new AlertDialog.Builder(easy_level.this);
+                final AlertDialog.Builder builder2 = new AlertDialog.Builder(medium_level.this);
                 builder2.setMessage("Do you want to play again?");
                 builder2.setCancelable(false);
                 builder2.setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(easy_level.this,level_select.class);
+                        Intent intent = new Intent(medium_level.this,level_select.class);
                         startActivity(intent);
                     }
                 });
                 builder2.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        pet = pets[random.nextInt(pets.length)];
-                        question.setText(mixWords(pet));
+                        veg = vegs[random.nextInt(vegs.length)];
+                        question.setText(mixWords(veg));
                         answer.setText("");
                         score_int = 0;
                         score.setText(String.valueOf(score_int));
@@ -123,22 +123,22 @@ public class easy_level extends AppCompatActivity implements PopupMenu.OnMenuIte
             public void onClick(View view) {
 
                 if (answer.getText().toString().isEmpty()){
-                    Toast.makeText(easy_level.this,"Enter you guess first", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(medium_level.this,"Enter you guess first", Toast.LENGTH_SHORT).show();
                 }
-                else if (answer.getText().toString().equalsIgnoreCase(pet)){
-                    Toast.makeText(easy_level.this,"You are correct", Toast.LENGTH_SHORT).show();
+                else if (answer.getText().toString().equalsIgnoreCase(veg)){
+                    Toast.makeText(medium_level.this,"You are correct", Toast.LENGTH_SHORT).show();
 
                     score_int +=10;
                     score.setText(String.valueOf(score_int));
                     answer.setText("");
 
 
-                    pet = pets[random.nextInt(pets.length)];
-                    question.setText(mixWords(pet));
+                    veg = vegs[random.nextInt(vegs.length)];
+                    question.setText(mixWords(veg));
 
                     count.start();
                 }else {
-                    Toast.makeText(easy_level.this,"You are wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(medium_level.this,"You are wrong", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -157,7 +157,7 @@ public class easy_level extends AppCompatActivity implements PopupMenu.OnMenuIte
 
     @Override
     public  void  onBackPressed(){
-        final AlertDialog.Builder builder = new AlertDialog.Builder(easy_level.this);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(medium_level.this);
         builder.setMessage("Are you sure you want to exit?");
         builder.setCancelable(true);
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -170,7 +170,7 @@ public class easy_level extends AppCompatActivity implements PopupMenu.OnMenuIte
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-                Intent intent = new Intent(easy_level.this,level_select.class);
+                Intent intent = new Intent(medium_level.this,level_select.class);
                 startActivity(intent);
             }
         });
@@ -192,7 +192,7 @@ public class easy_level extends AppCompatActivity implements PopupMenu.OnMenuIte
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.logout_option:
-                final AlertDialog.Builder builder = new AlertDialog.Builder(easy_level.this);
+                final AlertDialog.Builder builder = new AlertDialog.Builder(medium_level.this);
                 builder.setMessage("Are you sure you want to logout?");
                 builder.setCancelable(true);
                 builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -208,10 +208,10 @@ public class easy_level extends AppCompatActivity implements PopupMenu.OnMenuIte
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.clear();
                         editor.commit();
-                        Toast.makeText(easy_level.this, "Log out successfully", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(medium_level.this, "Log out successfully", Toast.LENGTH_SHORT).show();
                         finish();
 
-                        Intent intent = new Intent(easy_level.this,LoginActivity.class);
+                        Intent intent = new Intent(medium_level.this,LoginActivity.class);
                         startActivity(intent);
                     }
                 });

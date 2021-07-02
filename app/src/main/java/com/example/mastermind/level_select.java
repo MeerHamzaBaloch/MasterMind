@@ -23,7 +23,7 @@ public class level_select extends AppCompatActivity implements PopupMenu.OnMenuI
 
     TextView tv_name;
     ImageView logout_btn;
-    CardView easy_btn;
+    CardView easy_btn, medium_btn, hard_btn;
 
     SharedPreferences sharedPreferences;
     private static final String SHARED_PREF_NAME="mypref";
@@ -39,6 +39,8 @@ public class level_select extends AppCompatActivity implements PopupMenu.OnMenuI
         tv_name = (TextView) findViewById(R.id.username_tv);
         logout_btn = (ImageView) findViewById(R.id.logout);
         easy_btn = (CardView) findViewById(R.id.easy_level_btn);
+        medium_btn = (CardView) findViewById(R.id.medium_level_btn);
+        hard_btn = (CardView) findViewById(R.id.hard_level_btn);
 
         sharedPreferences = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE);
         String name = sharedPreferences.getString(KEY_NAME,null);
@@ -54,6 +56,23 @@ public class level_select extends AppCompatActivity implements PopupMenu.OnMenuI
                 startActivity(intent);
             }
         });
+
+        medium_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(level_select.this,medium_level.class);
+                startActivity(intent);
+            }
+        });
+
+        hard_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(level_select.this,hard_level.class);
+                startActivity(intent);
+            }
+        });
+
 
 
 

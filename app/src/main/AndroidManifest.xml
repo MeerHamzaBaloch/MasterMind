@@ -9,9 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MasterMind">
-        <activity android:name=".easy_level">
+        <activity android:name=".hard_level">
 
         </activity>
+        <activity android:name=".medium_level">
+
+        </activity>
+        <activity android:name=".easy_level"></activity>
         <activity android:name=".level_select" />
         <activity android:name=".Splash_Activity">
             <intent-filter>
