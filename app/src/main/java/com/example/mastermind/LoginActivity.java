@@ -2,6 +2,8 @@ package com.example.mastermind;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -82,5 +84,11 @@ public class LoginActivity extends AppCompatActivity {
            }
        });
 
+    }
+
+
+    @Override
+    public  void  onBackPressed(){
+        moveTaskToBack(false);
     }
 }

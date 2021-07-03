@@ -108,6 +108,8 @@ public class level_select extends AppCompatActivity implements PopupMenu.OnMenuI
                 editor.commit();
                 Toast.makeText(level_select.this, "Log out successfully", Toast.LENGTH_SHORT).show();
                 finish();
+                Intent intent = new Intent(level_select.this,LoginActivity.class);
+                startActivity(intent);
             }
         });
         AlertDialog alertDialog = builder.create();
@@ -145,6 +147,8 @@ public class level_select extends AppCompatActivity implements PopupMenu.OnMenuI
                         editor.commit();
                         Toast.makeText(level_select.this, "Log out successfully", Toast.LENGTH_SHORT).show();
                         finish();
+                        Intent intent = new Intent(level_select.this,LoginActivity.class);
+                        startActivity(intent);
                     }
                 });
                 AlertDialog alertDialog = builder.create();

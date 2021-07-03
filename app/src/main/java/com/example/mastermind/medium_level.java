@@ -192,16 +192,16 @@ public class medium_level extends AppCompatActivity implements PopupMenu.OnMenuI
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.logout_option:
-                final AlertDialog.Builder builder = new AlertDialog.Builder(medium_level.this);
-                builder.setMessage("Are you sure you want to logout?");
-                builder.setCancelable(true);
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                final AlertDialog.Builder builder10 = new AlertDialog.Builder(medium_level.this);
+                builder10.setMessage("Are you sure you want to logout?");
+                builder10.setCancelable(true);
+                builder10.setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
                     }
                 });
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                builder10.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -215,7 +215,7 @@ public class medium_level extends AppCompatActivity implements PopupMenu.OnMenuI
                         startActivity(intent);
                     }
                 });
-                AlertDialog alertDialog = builder.create();
+                AlertDialog alertDialog = builder10.create();
                 alertDialog.show();
 
             default:
