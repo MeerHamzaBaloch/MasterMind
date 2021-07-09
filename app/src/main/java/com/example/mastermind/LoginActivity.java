@@ -15,6 +15,8 @@ import android.widget.Toast;
 public class LoginActivity extends AppCompatActivity {
   private   EditText username_et,Password;
    private Button Login,RegisterNow;
+    public String adminname="admin";
+    public String adminpass="admin";
    DBHelper DB;
    private String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
@@ -77,12 +79,21 @@ public class LoginActivity extends AppCompatActivity {
                        }
                        else
                            {
-                               Toast.makeText(LoginActivity.this,"invalid credentials",Toast.LENGTH_SHORT).show();
+                               if (username.matches(adminname)&&pass.matches(adminpass))
+                               {
+                                   Intent intent = new Intent(LoginActivity.this, AdminPannelActivity.class);
+                                   startActivity(intent);
+                                   username_et.getText().clear();
+                                   Password.getText().clear();
+                               }else {
+                                   Toast.makeText(LoginActivity.this,"invalid credentials",Toast.LENGTH_SHORT).show();
+                               }
                            }
                    }
 
            }
        });
+       
 
     }
 

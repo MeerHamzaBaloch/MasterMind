@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.MenuItem;
@@ -54,6 +55,7 @@ public class easy_level extends AppCompatActivity implements PopupMenu.OnMenuIte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_easy_level);
+        MediaPlayer player =MediaPlayer.create(easy_level.this,R.raw.bgsoundbtn);
         sharedPreferences = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE);
         String name = sharedPreferences.getString(KEY_NAME,null);
         tv_name = (TextView) findViewById(R.id.username_tv_easy);
@@ -121,6 +123,7 @@ public class easy_level extends AppCompatActivity implements PopupMenu.OnMenuIte
         check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                player.start();
 
                 if (answer.getText().toString().isEmpty()){
                     Toast.makeText(easy_level.this,"Enter you guess first", Toast.LENGTH_SHORT).show();

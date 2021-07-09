@@ -8,21 +8,21 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:screenOrientation="portrait"
         android:theme="@style/Theme.MasterMind">
-        <activity android:name=".hard_level">
-
-        </activity>
-        <activity android:name=".medium_level">
-
-        </activity>
-        <activity android:name=".easy_level"></activity>
+        <activity android:name=".ViewWordsActivity"/>
+        <activity android:name=".AddWordsActivity" />
+        <activity android:name=".AdminPannelActivity" />
+        <activity android:name=".hard_level" />
+        <activity android:name=".medium_level" />
+        <activity android:name=".easy_level" />
         <activity android:name=".level_select" />
         <activity android:name=".Splash_Activity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".UserActivity" />

@@ -9,6 +9,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.MenuItem;
@@ -35,6 +36,10 @@ public class level_select extends AppCompatActivity implements PopupMenu.OnMenuI
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level_select);
+
+        MediaPlayer player =MediaPlayer.create(level_select.this,R.raw.mysound1);
+        player.setLooping(true);
+        player.start();
 
         tv_name = (TextView) findViewById(R.id.username_tv);
         logout_btn = (ImageView) findViewById(R.id.logout);
