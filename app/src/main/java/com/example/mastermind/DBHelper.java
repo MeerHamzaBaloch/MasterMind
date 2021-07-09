@@ -13,10 +13,11 @@ import java.util.List;
 
 public class DBHelper extends SQLiteOpenHelper {
     public static final String DBname ="Register.db";
-    public DBHelper(@Nullable Context context) {
-        super(context, "Register.db", null, 1);
-    }
-
+    //Database version
+    private static final int DATABASE_VERSION = 1;
+    //Database Name
+    private static final String DATABASE_NAME = "wordsDB";
+    //Database Table name
     private static final String TABLE_NAME = "words";
     //Table columns
     public static final String ID = "id";
@@ -24,10 +25,22 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String Type = "type";
     private SQLiteDatabase sqLiteDatabase;
 
+
+
+
+
+    //creating table query
+    private static final String CREATE_TABLE = "create table " + TABLE_NAME +"("+ID+
+            " INTEGER PRIMARY KEY AUTOINCREMENT," + NAME + " TEXT NOT NULL,"+Type+" TEXT NOT NULL);";
+
+    public DBHelper(@Nullable Context context) {
+        super(context, "project.db", null, 1);
+    }
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create Table usersdata(username TEXT, email TEXT,password TEXT)");
-        db.execSQL("create Table words(id  INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT,type TEXT)");
+        db.execSQL(CREATE_TABLE);
     }
 
     @Override
@@ -103,4 +116,16 @@ public class DBHelper extends SQLiteOpenHelper {
         else
             return false;
     }
+
+
+    //view users
+    public Cursor viewUsers(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "Select * from usersdata";
+        Cursor cursor = db.rawQuery(query,null);
+
+
+        return cursor;
+    }
+
 }

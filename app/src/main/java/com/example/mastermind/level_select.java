@@ -25,6 +25,8 @@ public class level_select extends AppCompatActivity implements PopupMenu.OnMenuI
     TextView tv_name;
     ImageView logout_btn;
     CardView easy_btn, medium_btn, hard_btn;
+    MediaPlayer player;
+
 
     SharedPreferences sharedPreferences;
     private static final String SHARED_PREF_NAME="mypref";
@@ -37,7 +39,8 @@ public class level_select extends AppCompatActivity implements PopupMenu.OnMenuI
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level_select);
 
-        MediaPlayer player =MediaPlayer.create(level_select.this,R.raw.mysound1);
+
+        player =MediaPlayer.create(level_select.this,R.raw.mysound1);
         player.setLooping(true);
         player.start();
 
@@ -115,6 +118,10 @@ public class level_select extends AppCompatActivity implements PopupMenu.OnMenuI
                 finish();
                 Intent intent = new Intent(level_select.this,LoginActivity.class);
                 startActivity(intent);
+                player.stop();
+
+
+
             }
         });
         AlertDialog alertDialog = builder.create();
@@ -154,6 +161,9 @@ public class level_select extends AppCompatActivity implements PopupMenu.OnMenuI
                         finish();
                         Intent intent = new Intent(level_select.this,LoginActivity.class);
                         startActivity(intent);
+
+                        player.stop();
+
                     }
                 });
                 AlertDialog alertDialog = builder.create();

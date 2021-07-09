@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,6 +25,8 @@ public class LoginActivity extends AppCompatActivity {
    private static final String SHARED_PREF_NAME="mypref";
    private static final String KEY_NAME="username";
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +39,8 @@ public class LoginActivity extends AppCompatActivity {
 
         //shared_Preferences to store username
         sharedPreferences = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE);
+
+
 
         DB = new DBHelper(this);
 
