@@ -32,6 +32,8 @@ public class hard_level extends AppCompatActivity implements PopupMenu.OnMenuIte
     private static final String KEY_NAME="username";
     TextView tv_name, score;
     ImageView logout_btn;
+    MediaPlayer player;
+    DBHelper DB;
 
     //for game logic
     TextView question;
@@ -55,11 +57,12 @@ public class hard_level extends AppCompatActivity implements PopupMenu.OnMenuIte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hard_level);
-        MediaPlayer player =MediaPlayer.create(hard_level.this,R.raw.bgsoundbtn);
+        player =MediaPlayer.create(hard_level.this,R.raw.bgsoundbtn);
         sharedPreferences = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE);
         String name = sharedPreferences.getString(KEY_NAME,null);
         tv_name = (TextView) findViewById(R.id.username_tv_hard);
         logout_btn = (ImageView) findViewById(R.id.logout);
+        DB = new DBHelper( this);
 
         question = (TextView) findViewById(R.id.question_text_hard);
         answer = (EditText) findViewById(R.id.hard_answer);
@@ -131,15 +134,73 @@ public class hard_level extends AppCompatActivity implements PopupMenu.OnMenuIte
                 else if (answer.getText().toString().equalsIgnoreCase(fruit)){
                     Toast.makeText(hard_level.this,"You are correct", Toast.LENGTH_SHORT).show();
 
-                    score_int +=10;
-                    score.setText(String.valueOf(score_int));
                     answer.setText("");
-
-
                     fruit = fruits[random.nextInt(fruits.length)];
                     question.setText(mixWords(fruit));
-
                     count.start();
+
+                    //insertingScore
+                    Boolean check = DB.checkUsername(name);
+                    if(check == false){
+                        if(score_int == 0){
+                            Boolean insert = DB.insertScore(name,10);
+                            score_int +=10;
+                            score.setText(String.valueOf(score_int));
+                            if (insert==true)
+                            {
+                                //Toast.makeText(easy_level.this,"added 10",Toast.LENGTH_SHORT).show();
+
+                            }else
+                            {
+                                //Toast.makeText(easy_level.this,"failed",Toast.LENGTH_SHORT).show();
+                            }
+
+                        }else {
+                            score_int +=10;
+                            score.setText(String.valueOf(score_int));
+                            Boolean update = DB.updateScore(name,score_int);
+
+                            if (update==true)
+                            {
+                                //Toast.makeText(easy_level.this,"updated 10",Toast.LENGTH_SHORT).show();
+
+                            }else
+                            {
+                                //Toast.makeText(easy_level.this,"update fail",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }else {
+                        if(score_int == 0){
+                            Boolean update1 = DB.updateScore(name,10);
+                            score_int +=10;
+                            score.setText(String.valueOf(score_int));
+                            if (update1==true)
+                            {
+                                //Toast.makeText(easy_level.this,"added 10",Toast.LENGTH_SHORT).show();
+
+                            }else
+                            {
+                                //Toast.makeText(easy_level.this,"failed",Toast.LENGTH_SHORT).show();
+                            }
+
+                        }else {
+                            score_int +=10;
+                            score.setText(String.valueOf(score_int));
+                            Boolean update = DB.updateScore(name,score_int);
+
+                            if (update==true)
+                            {
+                                //Toast.makeText(easy_level.this,"updated 10",Toast.LENGTH_SHORT).show();
+
+                            }else
+                            {
+                                //Toast.makeText(easy_level.this,"update fail",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+
+
+
                 }else {
                     Toast.makeText(hard_level.this,"You are wrong", Toast.LENGTH_SHORT).show();
                 }
@@ -216,6 +277,7 @@ public class hard_level extends AppCompatActivity implements PopupMenu.OnMenuIte
 
                         Intent intent = new Intent(hard_level.this,LoginActivity.class);
                         startActivity(intent);
+                        player.stop();
                     }
                 });
                 AlertDialog alertDialog = builder.create();

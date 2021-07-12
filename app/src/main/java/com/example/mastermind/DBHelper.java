@@ -34,12 +34,13 @@ public class DBHelper extends SQLiteOpenHelper {
             " INTEGER PRIMARY KEY AUTOINCREMENT," + NAME + " TEXT NOT NULL,"+Type+" TEXT NOT NULL);";
 
     public DBHelper(@Nullable Context context) {
-        super(context, "project.db", null, 1);
+        super(context, "OurProject.db", null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create Table usersdata(username TEXT, email TEXT,password TEXT)");
+        db.execSQL("create Table scores(username TEXT, score INTEGER)");
         db.execSQL(CREATE_TABLE);
     }
 
@@ -127,5 +128,51 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return cursor;
     }
+
+    //addScore
+
+    public Boolean insertScore(String username,Integer score)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("username", username);
+        contentValues.put("score", score);
+        long result = db.insert( "scores", null, contentValues);
+        if (result==-1) return false;
+        else return true;
+    }
+
+    public Boolean updateScore(String username,Integer score)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("username", username);
+        contentValues.put("score", score);
+        long result = db.update( "scores",contentValues, "username = ?", new String[]
+                {username});
+        if (result==-1) return false;
+        else return true;
+    }
+
+    public  boolean checkUsername(String username){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery( "Select * from scores where username =?", new String[] {username});
+        if (cursor.getCount()>0)
+            return true;
+        else
+            return false;
+    }
+
+    //view users
+    public Cursor viewScores(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "Select * from scores";
+        Cursor cursor = db.rawQuery(query,null);
+
+
+        return cursor;
+    }
+
+
 
 }

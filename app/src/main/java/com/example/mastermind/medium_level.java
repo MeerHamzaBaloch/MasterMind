@@ -32,6 +32,8 @@ public class medium_level extends AppCompatActivity implements PopupMenu.OnMenuI
     private static final String KEY_NAME="username";
     TextView tv_name, score;
     ImageView logout_btn;
+    MediaPlayer player;
+    DBHelper DB;
 
     //for game logic
     TextView question;
@@ -55,7 +57,7 @@ public class medium_level extends AppCompatActivity implements PopupMenu.OnMenuI
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medium_level);
-        MediaPlayer player =MediaPlayer.create(medium_level.this,R.raw.bgsoundbtn);
+        player =MediaPlayer.create(medium_level.this,R.raw.bgsoundbtn);
         sharedPreferences = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE);
         String name = sharedPreferences.getString(KEY_NAME,null);
         tv_name = (TextView) findViewById(R.id.username_tv_medium);
@@ -66,6 +68,7 @@ public class medium_level extends AppCompatActivity implements PopupMenu.OnMenuI
         check= (Button) findViewById(R.id.check_btn_medium);
         score = (TextView) findViewById(R.id.score_medium);
         progressBar = (ProgressBar) findViewById(R.id.Progressbar_medium);
+        DB = new DBHelper( this);
 
 
 
@@ -131,15 +134,71 @@ public class medium_level extends AppCompatActivity implements PopupMenu.OnMenuI
                 else if (answer.getText().toString().equalsIgnoreCase(veg)){
                     Toast.makeText(medium_level.this,"You are correct", Toast.LENGTH_SHORT).show();
 
-                    score_int +=10;
-                    score.setText(String.valueOf(score_int));
                     answer.setText("");
-
-
                     veg = vegs[random.nextInt(vegs.length)];
                     question.setText(mixWords(veg));
-
                     count.start();
+
+                    //insertingScore
+                    Boolean check = DB.checkUsername(name);
+                    if(check == false){
+                        if(score_int == 0){
+                            Boolean insert = DB.insertScore(name,10);
+                            score_int +=10;
+                            score.setText(String.valueOf(score_int));
+                            if (insert==true)
+                            {
+                                //Toast.makeText(medium_level.this,"added 10",Toast.LENGTH_SHORT).show();
+
+                            }else
+                            {
+                                //Toast.makeText(medium_level.this,"failed",Toast.LENGTH_SHORT).show();
+                            }
+
+                        }else {
+                            score_int +=10;
+                            score.setText(String.valueOf(score_int));
+                            Boolean update = DB.updateScore(name,score_int);
+
+                            if (update==true)
+                            {
+                                //Toast.makeText(medium_level.this,"updated 10",Toast.LENGTH_SHORT).show();
+
+                            }else
+                            {
+                                //Toast.makeText(medium_level.this,"update fail",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }else {
+                        if(score_int == 0){
+                            Boolean update1 = DB.updateScore(name,10);
+                            score_int +=10;
+                            score.setText(String.valueOf(score_int));
+                            if (update1==true)
+                            {
+                                //Toast.makeText(medium_level.this,"added 10",Toast.LENGTH_SHORT).show();
+
+                            }else
+                            {
+                                //Toast.makeText(medium_level.this,"failed",Toast.LENGTH_SHORT).show();
+                            }
+
+                        }else {
+                            score_int +=10;
+                            score.setText(String.valueOf(score_int));
+                            Boolean update = DB.updateScore(name,score_int);
+
+                            if (update==true)
+                            {
+                                //Toast.makeText(medium_level.this,"updated 10",Toast.LENGTH_SHORT).show();
+
+                            }else
+                            {
+                                //Toast.makeText(medium_level.this,"update fail",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+
                 }else {
                     Toast.makeText(medium_level.this,"You are wrong", Toast.LENGTH_SHORT).show();
                 }
@@ -160,16 +219,16 @@ public class medium_level extends AppCompatActivity implements PopupMenu.OnMenuI
 
     @Override
     public  void  onBackPressed(){
-        final AlertDialog.Builder builder = new AlertDialog.Builder(medium_level.this);
-        builder.setMessage("Are you sure you want to exit?");
-        builder.setCancelable(true);
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        final AlertDialog.Builder builder3 = new AlertDialog.Builder(medium_level.this);
+        builder3.setMessage("Are you sure you want to exit?");
+        builder3.setCancelable(true);
+        builder3.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
             }
         });
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        builder3.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
@@ -177,7 +236,7 @@ public class medium_level extends AppCompatActivity implements PopupMenu.OnMenuI
                 startActivity(intent);
             }
         });
-        AlertDialog alertDialog = builder.create();
+        AlertDialog alertDialog = builder3.create();
         alertDialog.show();
 
     }
@@ -216,6 +275,8 @@ public class medium_level extends AppCompatActivity implements PopupMenu.OnMenuI
 
                         Intent intent = new Intent(medium_level.this,LoginActivity.class);
                         startActivity(intent);
+
+                        player.stop();
                     }
                 });
                 AlertDialog alertDialog = builder10.create();
