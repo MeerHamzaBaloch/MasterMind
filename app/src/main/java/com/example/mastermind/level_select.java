@@ -62,6 +62,7 @@ public class level_select extends AppCompatActivity implements PopupMenu.OnMenuI
             public void onClick(View v) {
                 Intent intent = new Intent(level_select.this,easy_level.class);
                 startActivity(intent);
+                player.stop();
             }
         });
 
@@ -70,6 +71,7 @@ public class level_select extends AppCompatActivity implements PopupMenu.OnMenuI
             public void onClick(View v) {
                 Intent intent = new Intent(level_select.this,medium_level.class);
                 startActivity(intent);
+                player.stop();
             }
         });
 
@@ -78,6 +80,7 @@ public class level_select extends AppCompatActivity implements PopupMenu.OnMenuI
             public void onClick(View v) {
                 Intent intent = new Intent(level_select.this,hard_level.class);
                 startActivity(intent);
+                player.stop();
             }
         });
 

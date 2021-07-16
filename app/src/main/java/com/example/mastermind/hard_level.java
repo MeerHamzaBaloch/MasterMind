@@ -58,6 +58,9 @@ public class hard_level extends AppCompatActivity implements PopupMenu.OnMenuIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hard_level);
         player =MediaPlayer.create(hard_level.this,R.raw.bgsoundbtn);
+        player =MediaPlayer.create(hard_level.this,R.raw.mysound1);
+        player.setLooping(true);
+        player.start();
         sharedPreferences = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE);
         String name = sharedPreferences.getString(KEY_NAME,null);
         tv_name = (TextView) findViewById(R.id.username_tv_hard);
