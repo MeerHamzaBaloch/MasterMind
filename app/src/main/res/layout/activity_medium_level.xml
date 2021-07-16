@@ -28,14 +28,11 @@
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="center_vertical"
+            android:background="@drawable/ic_baseline_supervised_user_circle1_24"/>
 
-
-
-            app:srcCompat="@drawable/account" />
 
         <TextView
             android:id="@+id/username_tv_medium"
@@ -51,13 +48,16 @@
 
         <ImageView
             android:id="@+id/logout"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_width="140dp"
+            android:layout_height="40dp"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
+            android:layout_marginRight="20dp"
             android:onClick="showPopup"
             android:paddingLeft="92dp"
-            app:srcCompat="@drawable/settings" />
+            android:background="@drawable/ic_baseline_settings1_24"
+
+            />
 
     </LinearLayout>
     <LinearLayout
@@ -160,12 +160,15 @@
 
     <Button
         android:id="@+id/check_btn_medium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="400dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
         android:text="Check"
-        android:background="@drawable/gradient_colorbtn"/>
-
-
+        android:textColor="#ffff"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:paddingBottom="10dp"
+        android:background="@drawable/checkbtn2"/>
 
 
 

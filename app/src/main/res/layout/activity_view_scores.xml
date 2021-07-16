@@ -6,7 +6,39 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".show_users"
-    android:padding="15dp">
+    >
+    <LinearLayout
+        android:id="@+id/layoutHeader"
+        android:layout_width="match_parent"
+        android:layout_height="118dp"
+        android:background="@drawable/admin_header"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/txt_admin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:gravity="center"
+            android:text="Admin"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/scores_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Log out"
+            android:layout_gravity="center"
+            android:textColor="#ffff"
+            android:background="@drawable/input_shap"
+            android:layout_marginLeft="180dp"
+            />
+
+    </LinearLayout>
 
 
 

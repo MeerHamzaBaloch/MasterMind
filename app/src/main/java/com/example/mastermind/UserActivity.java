@@ -41,6 +41,8 @@ public class UserActivity extends AppCompatActivity {
                     String FullName = fullname.getText().toString();
                     String email = etemail.getText().toString();
                     String pass = etpassword.getText().toString();
+                    if (fullname.length() > 4 && email.length() > 4 && pass.length() > 4)
+                    {
 
                     if (FullName.equals("")||email.equals("")||pass.equals("")){
                         Toast.makeText( UserActivity.this, "Pleace Enter all the fields", Toast.LENGTH_SHORT).show();
@@ -55,7 +57,8 @@ public class UserActivity extends AppCompatActivity {
                                 Toast.makeText(UserActivity.this,"Registered Successfull",Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(UserActivity.this,LoginActivity.class);
                                 startActivity(intent);
-                            }else
+                            }
+                            else
                             {
                                 Toast.makeText(UserActivity.this,"Register failed",Toast.LENGTH_SHORT).show();
                             }
@@ -68,6 +71,11 @@ public class UserActivity extends AppCompatActivity {
                         Toast.makeText(UserActivity.this,"Email Invalid !",Toast.LENGTH_SHORT).show();
                     }
 
+                }
+                    else
+                    {
+                        Toast.makeText(UserActivity.this,"Please Check Length !",Toast.LENGTH_SHORT).show();
+                    }
                 }
 
 

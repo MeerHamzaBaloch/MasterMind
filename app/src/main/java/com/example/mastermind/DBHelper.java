@@ -163,10 +163,21 @@ public class DBHelper extends SQLiteOpenHelper {
             return false;
     }
 
-    //view users
+    //view scores
     public Cursor viewScores(){
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "Select * from scores";
+        Cursor cursor = db.rawQuery(query,null);
+
+
+        return cursor;
+    }
+
+
+    //easy words fetch
+    public Cursor easy_words_fetch(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "Select * from words";
         Cursor cursor = db.rawQuery(query,null);
 
 

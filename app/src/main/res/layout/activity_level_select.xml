@@ -17,14 +17,11 @@
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="center_vertical"
+            android:background="@drawable/ic_baseline_supervised_user_circle1_24"/>
 
-
-
-            app:srcCompat="@drawable/account" />
 
         <TextView
             android:id="@+id/username_tv"
@@ -40,14 +37,16 @@
 
         <ImageView
             android:id="@+id/logout"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_width="140dp"
+            android:layout_height="40dp"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
+            android:layout_marginRight="20dp"
             android:onClick="showPopup"
             android:paddingLeft="92dp"
-            app:srcCompat="@drawable/settings" />
+            android:background="@drawable/ic_baseline_settings1_24"
 
+            />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
